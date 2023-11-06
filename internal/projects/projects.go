@@ -207,8 +207,19 @@ Examples:
 	fmt.Print(helpText)
 }
 
-func (ctx *CommandContext) HandleSetDirectories(projectName, inOrOut, path string) {
+func (ctx *CommandContext) HandleSetDirectories(args []string) {
+
+	if len(args) != 5 {
+		fmt.Println("Incorrect number of arguments for 'set'.")
+		return
+	}
+
+	projectName := args[2]
+	inOrOut := args[3]
+	path := args[4]
+
 	project, exists := ctx.FindProjectByName(projectName)
+
 	if !exists {
 		fmt.Println("Project not found.")
 		return
@@ -229,6 +240,7 @@ func (ctx *CommandContext) HandleSetDirectories(projectName, inOrOut, path strin
 		utils.ErrFatal(err)
 		path = dir
 	}
+
 	switch inOrOut {
 	case "in":
 		fmt.Println(path)
@@ -253,12 +265,15 @@ func (ctx *CommandContext) HandleRemove(projectName string) {
 }
 
 func (ctx *CommandContext) HandleRun(args []string) {
-	if len(args) == 2 {
+
+	switch len(args) {
+	case 2:
 		for _, project := range ctx.Config.Projects {
 			ctx.HandleConvertDto(project.Name)
 		}
-	}
-	if len(args) == 3 {
+	case 3:
 		ctx.HandleConvertDto(args[2])
+	default:
+		fmt.Println("Incorrect number of arguments for 'run'.")
 	}
 }
