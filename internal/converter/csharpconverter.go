@@ -84,12 +84,26 @@ func parseField(line string) (fieldName, tsType, attribute, comment string) {
 		return "", "", "", ""
 	}
 
-	fieldName = parts[len(parts)-1]
-	tsType, comment = csharpTypeToTypeScript(parts[len(parts)-2])
-	if len(parts) > 2 && strings.HasPrefix(parts[0], "[") {
-		attribute = parts[0]
+	for i, part := range parts {
+		if strings.HasPrefix(part, "[") {
+			attribute = part
+			for j := i + 1; j < len(parts); j++ {
+				if strings.HasSuffix(parts[j], "]") {
+					attribute += " " + parts[j]
+					parts = append(parts[:i], parts[j+1:]...)
+					break
+				} else {
+					attribute += " " + parts[j]
+				}
+			}
+			break
+		}
 	}
+
+	fieldName = parts[len(parts)-1]
 	fieldName = strings.TrimRight(fieldName, ",;")
+	tsType, comment = csharpTypeToTypeScript(parts[len(parts)-2])
+
 	return fieldName, tsType, attribute, comment
 }
 
