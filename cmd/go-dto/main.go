@@ -33,6 +33,7 @@ func main() {
 	}
 
 	switch os.Args[1] {
+	
 	case "i", "init":
 		handleInit()
 
@@ -46,7 +47,7 @@ func main() {
 		ctx.HandleProjects(os.Args)
 
 	case "s", "set":
-		ctx.HandleSetDirectories(os.Args[2], os.Args[3], os.Args[4])
+		ctx.HandleSetDirectories(os.Args)
 
 	case "r", "remove":
 		ctx.HandleRemove(os.Args[2])
@@ -55,6 +56,6 @@ func main() {
 		ctx.HandleRun(os.Args)
 
 	default:
-		ctx.HandleConvertDto(os.Args[1])
+		fmt.Println("Unknown command. Use `go-dto help` to see available commands.")
 	}
 }
