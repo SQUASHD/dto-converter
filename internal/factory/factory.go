@@ -1,9 +1,9 @@
 package factory
 
 import (
-	"dto-converter/internal/converter"
-	"dto-converter/internal/structs"
 	"fmt"
+	"github.com/SQUASHD/dto-converter/internal/converter"
+	"github.com/SQUASHD/dto-converter/internal/structs"
 )
 
 var SupportedLanguages = []string{"csharp"}

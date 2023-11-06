@@ -1,9 +1,9 @@
 package main
 
 import (
-	"dto-converter/internal/config"
-	"dto-converter/internal/projects"
 	"fmt"
+	"github.com/SQUASHD/dto-converter/internal/config"
+	"github.com/SQUASHD/dto-converter/internal/projects"
 	"os"
 )
 

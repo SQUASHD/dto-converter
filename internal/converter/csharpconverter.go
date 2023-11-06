@@ -4,7 +4,7 @@ package converter
 
 import (
 	"bufio"
-	"dto-converter/internal/utils"
+	"github.com/SQUASHD/dto-converter/internal/utils"
 	"os"
 	"strings"
 )

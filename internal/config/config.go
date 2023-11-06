@@ -3,8 +3,8 @@
 package config
 
 import (
-	"dto-converter/internal/structs"
 	"encoding/json"
+	"github.com/SQUASHD/dto-converter/internal/structs"
 	"os"
 )
 

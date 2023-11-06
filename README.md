@@ -21,20 +21,16 @@ yours, that's a win. If not, you might need to extend it to meet your specific r
 
 ## Installation
 
-Get started with `go-dto` by cloning the repository:
+Just run:
 
 ```bash
-git clone https://github.com/SQUASHD/dto-converter.git
-```
-
-cd into the project directory and install the tool:
-```bash
-go install ./...
+go install ./... "github.com/SQUASHD/dto-converter"
 ```
 Test on the example project:
 
 ```bash
 go-dto add example csharp example/input example/output
+go-dto go
 ```
 
 ## Usage

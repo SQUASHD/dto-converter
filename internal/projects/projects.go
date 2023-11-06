@@ -1,11 +1,11 @@
 package projects
 
 import (
-	"dto-converter/internal/factory"
-	"dto-converter/internal/structs"
-	"dto-converter/internal/utils"
 	"encoding/json"
 	"fmt"
+	"github.com/SQUASHD/dto-converter/internal/factory"
+	"github.com/SQUASHD/dto-converter/internal/structs"
+	"github.com/SQUASHD/dto-converter/internal/utils"
 	"os"
 )
 
