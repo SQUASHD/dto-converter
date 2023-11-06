@@ -1,7 +1,6 @@
 package converter
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -55,7 +54,6 @@ func (w *TSWriter) WriteAllTypes(tsTypes []TypeScriptType, filePath string) erro
 		sb.WriteString("}\n\n")
 	}
 
-	fmt.Println("Writing to file:", filePath)
 	return os.WriteFile(filePath, []byte(sb.String()), 0644)
 }
 
