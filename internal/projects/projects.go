@@ -120,13 +120,13 @@ func (ctx *CommandContext) HandleConvertDto(projectName string) {
 	}
 }
 
-func (ctx *CommandContext) FindProjectByName(name string) (structs.Project, bool) {
-	for _, project := range ctx.Config.Projects {
+func (ctx *CommandContext) FindProjectByName(name string) (*structs.Project, bool) {
+	for i, project := range ctx.Config.Projects {
 		if name == project.Name {
-			return project, true
+			return &ctx.Config.Projects[i], true
 		}
 	}
-	return structs.Project{}, false
+	return nil, false
 }
 
 func (ctx *CommandContext) HandleAdd(args []string) {
@@ -231,14 +231,15 @@ func (ctx *CommandContext) HandleSetDirectories(projectName, inOrOut, path strin
 	}
 	switch inOrOut {
 	case "in":
+		fmt.Println(path)
 		project.InPath = path
 	case "out":
+		fmt.Println(path)
 		project.OutPath = path
 	}
 
-	if err := ctx.Write(); err != nil {
-		utils.ErrFatal(err)
-	}
+	err := ctx.Write()
+	utils.ErrFatal(err)
 }
 
 func (ctx *CommandContext) HandleRemove(projectName string) {

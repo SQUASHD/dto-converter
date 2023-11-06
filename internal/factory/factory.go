@@ -8,7 +8,7 @@ import (
 
 var SupportedLanguages = []string{"csharp"}
 
-func ConverterFactory(project structs.Project) (converter.Converter, error) {
+func ConverterFactory(project *structs.Project) (converter.Converter, error) {
 	tsWriter := converter.NewTSWriter(project.OutPath)
 	switch project.Language {
 	case "csharp":
